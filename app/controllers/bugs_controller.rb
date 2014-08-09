@@ -2,17 +2,21 @@ class BugsController < ApplicationController
   def new
   end
 
-def create
-  @bug = Bug.new(params["bug"])
-  if @bug.save
-    redirect_to bug_path(@bug)
-  else
-    render :new
+  def create
+    @bug = Bug.new(params["bug"])
+    if @bug.save
+      redirect_to bug_path(@bug)
+    else
+      render :new
     end 
-end
+  end
 
 
-def show
-  @bug = Bug.find(params["id"])
+  def show
+    @bug = Bug.find(params["id"])
+  end
+
+  def index
+    @bugs = Bug.all
   end
 end
